@@ -28,11 +28,11 @@ public class GUI extends Program
         GCanvas canvas = new GCanvas();
         add(canvas);
         //add background
-        GImage weatherappgroup = new GImage("images/weatherappgroup.png");
-        canvas.add(weatherappgroup,0 ,0 );
+        //GImage weatherappgroup = new GImage("images/weatherappgroup.png");
+        //canvas.add(weatherappgroup,0 ,0 );
 
 
-        JLabel zipLabel = new JLabel("Zip");
+        //JLabel zipLabel = new JLabel("Zip");
         JLabel cityLabel = new JLabel("City");
         JLabel tempLabel = new JLabel("Temp");
         JLabel conditionLabel = new JLabel("Condition");
@@ -52,19 +52,19 @@ public class GUI extends Program
         JButton goButton = new JButton("Go");
         JButton clearButton = new JButton("Clear");
 
-        canvas.add(zipLabel, 40, 20);
-        canvas.add(cityLabel, 40, 70);
-        canvas.add(tempLabel, 40, 120);
-        canvas.add(conditionLabel, 40, 170);
+        //canvas.add(zipLabel, 40, 20);
+        //canvas.add(cityLabel, 40, 70);
+        //canvas.add(tempLabel, 40, 120);
+        //canvas.add(conditionLabel, 40, 170);
         canvas.add(dateLabel, 40, 220);
         canvas.add(timeLabel, 40, 270);
         canvas.add(gIcon, 250, 145);
 
-        canvas.add(zipField, 100, 20);
-        canvas.add(cityField, 100, 70);
+        canvas.add(zipField, 100, 25);
+        canvas.add(dateField, 100, 70);
         canvas.add(tempField, 100, 120);
         canvas.add(conditionField, 100, 170);
-        canvas.add(dateField, 100, 220);
+        canvas.add(cityField, 100, 220);
         canvas.add(timeField, 100, 270);
         zipField.setSize(150, 20);
         cityField.setSize(150, 20);
@@ -74,8 +74,8 @@ public class GUI extends Program
         timeField.setSize(150, 20);
 
 
-        canvas.add(goButton, 80,320);
-        canvas.add(clearButton, 180, 320);
+        canvas.add(goButton, 40,20);
+        canvas.add(clearButton, 260, 20);
 
         addActionListeners();
     }
