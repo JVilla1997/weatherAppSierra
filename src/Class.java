@@ -8,12 +8,21 @@ import java.net.URL;
 public class Class
 {
     String zipcode;
+    boolean zip;
+    String city;
+    String state;
     final String APIKEY = "1655f919bbcd29ed";
     JsonElement jse;
 
     public Class(String location)
     {
+        zip = true;
         zipcode = location;
+    }
+    public Class(String c, String s){
+        city = c;
+        state = s;
+        zip = false;
     }
 
     public String getCity(String key) {
@@ -51,11 +60,28 @@ public class Class
         return getData("icon_url");
     }
 
+    public Forecast[] get5Day()
+    {
+        Forecast[] fArray = new Forecast[6];
+        for(int i = 1; i < 6; i++)
+        {
+            fArray[i] = new Forecast(i);
+        }
+
+        return fArray;
+    }
+
     public void fetch()
     {
-        String weatherRequest = "http://api.wunderground.com/api/" +
-                APIKEY + "/conditions/q/" + zipcode + ".json";
-
+        String weatherRequest;
+        if(zip) {
+            weatherRequest = "http://api.wunderground.com/api/" +
+                    APIKEY + "/conditions/forecast10day/q/" + zipcode + ".json";
+        }
+        else{
+            weatherRequest = "http://api.wunderground.com/api/" + APIKEY + "/conditions/forecast10day/q/" +
+                    state + "/" + city + ".json";
+        }
         try
         {
             URL weatherURL = new URL(weatherRequest);
@@ -81,12 +107,16 @@ public class Class
 
     public static void main(String[] args)
     {
-        Class b = new Class("http://api.wunderground.com/api/1655f919bbcd29ed/conditions/q/95843.json");
+        Class b = new Class("Rocklin", "CA");
         System.out.println(b.getTemp());
         System.out.println(b.getConditions());
         System.out.println(b.getWind());
         System.out.println(b.getIcon());
         System.out.println(b.getLoc());
+
+        Forecast[] test;
+        test = b.get5Day();
+        System.out.println(test[1].low);
     }
 }
 
