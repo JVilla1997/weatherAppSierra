@@ -14,6 +14,8 @@ public class Forecast
     String low;
     String icon;
     String date;
+    String highC;
+    String lowC;
     JsonElement jse;
 
     Class c = new Class("95747");
@@ -26,6 +28,8 @@ public class Forecast
         low = getLow(index);
         icon = getFIcon(index);
         date = getFDate(index);
+        highC = getHighC(index);
+        lowC = getLowC(index);
     }
 
     public JsonArray getFArray(){
@@ -44,10 +48,10 @@ public class Forecast
     }
 
     public String getFDate(int index){
-        String fDate = getFArray().get(index).getAsJsonObject().get("date").getAsJsonObject().get("weekday").getAsString();
-        fDate += " " + getFArray().get(index).getAsJsonObject().get("date").getAsJsonObject().get("monthname").getAsString();
+        String fDate = getFArray().get(index).getAsJsonObject().get("date").getAsJsonObject().get("weekday_short").getAsString();
+        //fDate += " " + getFArray().get(index).getAsJsonObject().get("date").getAsJsonObject().get("monthname").getAsString();
         fDate += " " + getFArray().get(index).getAsJsonObject().get("date").getAsJsonObject().get("day").getAsInt();
-        fDate += ", " + getFArray().get(index).getAsJsonObject().get("date").getAsJsonObject().get("year").getAsInt();
+        //fDate += ", " + getFArray().get(index).getAsJsonObject().get("date").getAsJsonObject().get("year").getAsInt();
         return fDate;
     }
 

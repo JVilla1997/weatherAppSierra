@@ -32,7 +32,7 @@ public class Class
 
     public String getLoc()
     {
-        return getCity("city");
+        return getCity("full");
     }
 
     public String getData(String key) {
@@ -63,7 +63,7 @@ public class Class
     public Forecast[] get5Day()
     {
         Forecast[] fArray = new Forecast[6];
-        for(int i = 1; i < 6; i++)
+        for(int i = 0; i < 6; i++)
         {
             fArray[i] = new Forecast(i);
         }
@@ -116,7 +116,7 @@ public class Class
 
         Forecast[] test;
         test = b.get5Day();
-        System.out.println(test[1].low);
+        System.out.println(test[3].low);
     }
 }
 

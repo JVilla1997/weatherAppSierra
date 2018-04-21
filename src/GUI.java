@@ -28,8 +28,8 @@ public class GUI extends Program
         GCanvas canvas = new GCanvas();
         add(canvas);
         //add background
-        GImage weatherappgroup = new GImage("images/weatherappgroup.png");
-        canvas.add(weatherappgroup,0 ,0 );
+        //GImage weatherappgroup = new GImage("images/weatherappgroup.png");
+        //canvas.add(weatherappgroup,0 ,0 );
 
 
         JLabel zipLabel = new JLabel("Zip");
