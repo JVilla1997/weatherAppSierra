@@ -35,7 +35,7 @@ public class GUI extends Program
 
         //add background - TO BE FIXED
         /*GImage background = new GImage("images/appBackground");
-        canvas.add(background,0 ,0 );r
+        canvas.add(background,0 ,0 );
         canvas.setSize(650, 850);*/
 
 
@@ -55,23 +55,25 @@ public class GUI extends Program
         canvas.add(zip,75, 0);
         zip.setSize(225, 25);
 
-        date = new JLabel("Date");
+        date = new JLabel("");
         canvas.add(date,110,30);
         date.setSize(150, 20);
         date.setFont(planeBold);
 
-        city = new JLabel("City, State");
-        canvas.add(city,110, 110);
-        city.setSize(150, 20);
-        city.setFont(planeBold);
-
-        temp = new JLabel("0.0 F");
-        canvas.add(temp,110, 50);
+        temp = new JLabel("");
+        canvas.add(temp,110, 70);
         temp.setSize(150, 20);
+        temp.setSize(temp.getPreferredSize());
         temp.setFont(comicSans);
         temp.setForeground(Color.WHITE);
 
-        condition = new JLabel("Forecast");
+        city = new JLabel("");
+        canvas.add(city,110, 150);
+        city.setSize(150, 20);
+        city.setSize(city.getPreferredSize());
+        city.setFont(planeBold);
+
+        condition = new JLabel("");
         canvas.add(condition, 30, 120);
         condition.setSize(150, 20);
 
@@ -101,10 +103,13 @@ public class GUI extends Program
         if (what.equals("Search"))
         {
             Class b = new Class(zip.getText());
+            Forecast f = new Forecast(0);
             city.setText(b.getLoc());
             city.setSize(city.getPreferredSize());
             temp.setText(b.getTemp());
             temp.setSize(temp.getPreferredSize());
+            date.setText(f.getToday(0));
+            date.setSize(date.getPreferredSize());
             condition.setText(b.getConditions());
             condition.setSize(condition.getPreferredSize());
             icon.setImage(b.getIcon());
