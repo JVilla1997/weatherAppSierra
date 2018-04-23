@@ -14,6 +14,7 @@ public class Forecast
     String low;
     String icon;
     String date;
+    String today;
     String highC;
     String lowC;
     JsonElement jse;
@@ -28,6 +29,7 @@ public class Forecast
         low = getLow(index);
         icon = getFIcon(index);
         date = getFDate(index);
+        today = getToday(index);
         highC = getHighC(index);
         lowC = getLowC(index);
     }
@@ -53,6 +55,14 @@ public class Forecast
         fDate += " " + getFArray().get(index).getAsJsonObject().get("date").getAsJsonObject().get("day").getAsInt();
         //fDate += ", " + getFArray().get(index).getAsJsonObject().get("date").getAsJsonObject().get("year").getAsInt();
         return fDate;
+    }
+
+    public String getToday(int index){
+        String today = getFArray().get(index).getAsJsonObject().get("date").getAsJsonObject().get("weekday").getAsString();
+        today += " , " + getFArray().get(index).getAsJsonObject().get("date").getAsJsonObject().get("monthname").getAsString();
+        today += " " + getFArray().get(index).getAsJsonObject().get("date").getAsJsonObject().get("day").getAsInt();
+        //today += ", " + getFArray().get(index).getAsJsonObject().get("date").getAsJsonObject().get("year").getAsInt();
+        return today;
     }
 
     public String getLow(int index){
@@ -127,5 +137,6 @@ public class Forecast
         System.out.println(f.getFDate(1));
         System.out.println(f.getLowC(1));
         System.out.println(f.getHighC(1));
+        System.out.println(f.getToday(0));
     }
 }
