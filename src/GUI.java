@@ -3,6 +3,7 @@ import acm.graphics.GImage;
 import acm.program.Program;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 
 
@@ -28,38 +29,50 @@ public class GUI extends Program
         GCanvas canvas = new GCanvas();
         add(canvas);
 
+        //Background color
+        Color blueColor = new Color(66, 170, 244);
+        canvas.setBackground(blueColor);
+
         //add background - TO BE FIXED
         /*GImage background = new GImage("images/appBackground");
-        canvas.add(background,0 ,0 );
+        canvas.add(background,0 ,0 );r
         canvas.setSize(650, 850);*/
 
 
         //JLabel zipLabel = new JLabel("Zip");
-        JLabel cityLabel = new JLabel("City");
-        JLabel tempLabel = new JLabel("Temp");
-        JLabel conditionLabel = new JLabel("Condition");
-        JLabel dateLabel = new JLabel("Date");
-        JLabel timeLabel = new JLabel("time");
+        //JLabel cityLabel = new JLabel("City");
+        //JLabel tempLabel = new JLabel("Temp");
+        //JLabel conditionLabel = new JLabel("Condition");
+        //JLabel dateLabel = new JLabel("Date");
+        //JLabel timeLabel = new JLabel("time");
+
+        //Fonts
+        Font comicSans = new Font("Comic Sans MS", Font.BOLD, 50);
+        Font planeBold = new Font( "Times New Romans", Font.BOLD, 25);
 
         // Fields
         zip = new JTextField();
-        canvas.add(zip, 100, 25);
-        zip.setSize(150, 20);
+        canvas.add(zip,75, 0);
+        zip.setSize(225, 25);
 
-        date = new JLabel();
-        canvas.add(date, 100, 70);
+        date = new JLabel("Date");
+        canvas.add(date,110,30);
         date.setSize(150, 20);
+        date.setFont(planeBold);
 
-        city = new JLabel();
-        canvas.add(city, 100, 220);
+        city = new JLabel("City, State");
+        canvas.add(city,110, 110);
         city.setSize(150, 20);
+        city.setFont(planeBold);
 
-        temp = new JLabel();
-        canvas.add(temp, 100, 120);
+        temp = new JLabel("0.0 F");
+        canvas.add(temp,110, 50);
         temp.setSize(150, 20);
+        temp.setFont(comicSans);
+        temp.setForeground(Color.WHITE);
 
-        condition = new JLabel();
-        canvas.add(condition, 100, 170);
+        condition = new JLabel("Forecast");
+        canvas.add(condition, 30, 120);
         condition.setSize(150, 20);
 
         time = new JLabel();
@@ -67,16 +80,16 @@ public class GUI extends Program
         time.setSize(150, 20);
 
         icon = new GImage("");
-        canvas.add(icon,250, 120);
+        canvas.add(icon,30, 60);
         icon.setSize(500, 500);
 
 
         // Buttons
-        JButton goButton = new JButton("Go");
-        canvas.add(goButton, 40,20);
+        JButton goButton = new JButton("Search");
+        canvas.add(goButton, 0,0);
 
         JButton clearButton = new JButton("Clear");
-        canvas.add(clearButton, 260, 20);
+        canvas.add(clearButton, 300, 0);
 
         addActionListeners();
     }
@@ -85,12 +98,15 @@ public class GUI extends Program
     {
         String what = e.getActionCommand();
 
-        if (what.equals("Go"))
+        if (what.equals("Search"))
         {
             Class b = new Class(zip.getText());
             city.setText(b.getLoc());
+            city.setSize(city.getPreferredSize());
             temp.setText(b.getTemp());
+            temp.setSize(temp.getPreferredSize());
             condition.setText(b.getConditions());
+            condition.setSize(condition.getPreferredSize());
             icon.setImage(b.getIcon());
 
 
@@ -98,9 +114,9 @@ public class GUI extends Program
         else if (what.equals("Clear"))
         {
             zip.setText("");
-            city.setText("");
-            temp.setText("");
-            condition.setText("");
+            city.setText("City,State");
+            temp.setText("0.0F");
+            condition.setText("Forcast");
             icon.setImage("");
         }
     }
