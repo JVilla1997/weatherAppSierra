@@ -9,27 +9,29 @@ import java.awt.event.ActionEvent;
 
 public class GUI extends Program
 {
-    private JTextField zipField;
-    private JTextField cityField;
-    private JTextField tempField;
-    private JTextField conditionField;
-    private JTextField dateField;
-    private JTextField timeField;
-    private GImage gIcon;
+    private JTextField zip;
+    private JLabel date;
+    private JLabel city;
+    private JLabel temp;
+    private JLabel condition;
+    private JLabel time;
+    private GImage icon;
 
     public GUI()
     {
         start();
-        setSize(390, 500);
+        setSize(650, 850);
     }
     // testing 123
     public void init()
     {
         GCanvas canvas = new GCanvas();
         add(canvas);
-        //add background
-        //GImage weatherappgroup = new GImage("images/weatherappgroup.png");
-        //canvas.add(weatherappgroup,0 ,0 );
+
+        //add background - TO BE FIXED
+        /*GImage background = new GImage("images/appBackground");
+        canvas.add(background,0 ,0 );
+        canvas.setSize(650, 850);*/
 
 
         //JLabel zipLabel = new JLabel("Zip");
@@ -39,42 +41,41 @@ public class GUI extends Program
         JLabel dateLabel = new JLabel("Date");
         JLabel timeLabel = new JLabel("time");
 
+        // Fields
+        zip = new JTextField();
+        canvas.add(zip, 100, 25);
+        zip.setSize(150, 20);
 
-        zipField = new JTextField();
-        cityField = new JTextField();
-        tempField = new JTextField();
-        conditionField = new JTextField();
-        dateField = new JTextField();
-        timeField = new JTextField();
-        gIcon = new GImage("");
+        date = new JLabel();
+        canvas.add(date, 100, 70);
+        date.setSize(150, 20);
+
+        city = new JLabel();
+        canvas.add(city, 100, 220);
+        city.setSize(150, 20);
+
+        temp = new JLabel();
+        canvas.add(temp, 100, 120);
+        temp.setSize(150, 20);
+
+        condition = new JLabel();
+        canvas.add(condition, 100, 170);
+        condition.setSize(150, 20);
+
+        time = new JLabel();
+        canvas.add(time, 100, 270);
+        time.setSize(150, 20);
+
+        icon = new GImage("");
+        canvas.add(icon,250, 120);
+        icon.setSize(500, 500);
 
 
+        // Buttons
         JButton goButton = new JButton("Go");
-        JButton clearButton = new JButton("Clear");
-
-        //canvas.add(zipLabel, 40, 20);
-        //canvas.add(cityLabel, 40, 70);
-        //canvas.add(tempLabel, 40, 120);
-        //canvas.add(conditionLabel, 40, 170);
-        canvas.add(dateLabel, 40, 220);
-        canvas.add(timeLabel, 40, 270);
-        canvas.add(gIcon, 250, 145);
-
-        canvas.add(zipField, 100, 25);
-        canvas.add(dateField, 100, 70);
-        canvas.add(tempField, 100, 120);
-        canvas.add(conditionField, 100, 170);
-        canvas.add(cityField, 100, 220);
-        canvas.add(timeField, 100, 270);
-        zipField.setSize(150, 20);
-        cityField.setSize(150, 20);
-        tempField.setSize(150, 20);
-        conditionField.setSize(150, 20);
-        dateField.setSize(150, 20);
-        timeField.setSize(150, 20);
-
-
         canvas.add(goButton, 40,20);
+
+        JButton clearButton = new JButton("Clear");
         canvas.add(clearButton, 260, 20);
 
         addActionListeners();
@@ -86,20 +87,21 @@ public class GUI extends Program
 
         if (what.equals("Go"))
         {
-            Class b = new Class(zipField.getText());
-            cityField.setText(b.getLoc());
-            tempField.setText(b.getTemp());
-            conditionField.setText(b.getConditions());
-            gIcon.setImage(b.getIcon());
+            Class b = new Class(zip.getText());
+            city.setText(b.getLoc());
+            temp.setText(b.getTemp());
+            condition.setText(b.getConditions());
+            icon.setImage(b.getIcon());
+
 
         }
         else if (what.equals("Clear"))
         {
-            zipField.setText("");
-            cityField.setText("");
-            tempField.setText("");
-            conditionField.setText("");
-            gIcon.setImage("");
+            zip.setText("");
+            city.setText("");
+            temp.setText("");
+            condition.setText("");
+            icon.setImage("");
         }
     }
 
