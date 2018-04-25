@@ -26,7 +26,7 @@ public class GUI extends Program
     public GUI()
     {
         start();
-        setSize(650, 840);
+        setSize(425, 840);
     }
     // testing 123
     public void init()
@@ -42,9 +42,9 @@ public class GUI extends Program
         //Forecast f = new Forecast(0);
 
         //add background - TO BE FIXED
-        /*GImage background = new GImage("images/appBackground");
+        GImage background = new GImage("images/appBackground.jpg");
         canvas.add(background,0 ,0 );
-        canvas.setSize(650, 850);*/
+        canvas.setSize(650, 850);
 
         //JLabel cityLabel = new JLabel("City");
         //JLabel tempLabel = new JLabel("Temp");
@@ -213,6 +213,7 @@ public class GUI extends Program
         dy4num.setSize(getPreferredSize());
         dy4num.setFont(nums);
 
+
         icon4 = new GImage("");
         canvas.add(icon4, 90, 575);
         icon4.setSize(500, 500);
@@ -249,6 +250,17 @@ public class GUI extends Program
         canvas.add(highLow5, 150, 450);
         highLow5.setSize(getPreferredSize());
         highLow5.setFont(nums1);
+
+        nextDay1.setForeground(Color.WHITE);
+        dy1num.setForeground(Color.WHITE);
+        nextDay2.setForeground(Color.WHITE);
+        dy2num.setForeground(Color.WHITE);
+        nextDay3.setForeground(Color.WHITE);
+        dy3num.setForeground(Color.WHITE);
+        nextDay4.setForeground(Color.WHITE);
+        dy4num.setForeground(Color.WHITE);
+        nextDay5.setForeground(Color.WHITE);
+        dy5num.setForeground(Color.WHITE);
 
         // Buttons
         JButton goButton = new JButton("Search");
