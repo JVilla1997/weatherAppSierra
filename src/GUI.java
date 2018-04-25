@@ -15,6 +15,7 @@ public class GUI extends Program
     private JTextField conditionField;
     private JTextField dateField;
     private JTextField timeField;
+    private JTextField forecastField;
     private GImage gIcon;
 
     public GUI()
@@ -46,6 +47,7 @@ public class GUI extends Program
         conditionField = new JTextField();
         dateField = new JTextField();
         timeField = new JTextField();
+        forecastField = new JTextField();
         gIcon = new GImage("");
 
 
@@ -66,6 +68,7 @@ public class GUI extends Program
         canvas.add(conditionField, 100, 170);
         canvas.add(cityField, 100, 220);
         canvas.add(timeField, 100, 270);
+        canvas.add(forecastField, 100, 320);
         zipField.setSize(150, 20);
         cityField.setSize(150, 20);
         tempField.setSize(150, 20);
@@ -79,17 +82,20 @@ public class GUI extends Program
 
         addActionListeners();
     }
-    ///comment
+
+    /*
     public void actionPerformed(ActionEvent e)
     {
         String what = e.getActionCommand();
 
         if (what.equals("Go"))
         {
-            Class b = new Class(zipField.getText());
+            Weather b = new Weather(zipField.getText());
+            //dateField.setText();
             cityField.setText(b.getLoc());
             tempField.setText(b.getTemp());
             conditionField.setText(b.getConditions());
+            forecastField.(b.get5Day());
             gIcon.setImage(b.getIcon());
 
         }
@@ -102,6 +108,7 @@ public class GUI extends Program
             gIcon.setImage("");
         }
     }
+    */
 
     public static void main(String[] args)
     {
