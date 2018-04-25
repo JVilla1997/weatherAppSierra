@@ -155,13 +155,14 @@ public class Weather
     //How to use methods
     public static void main(String[]args)
     {
-        Weather c = new Weather("CA", "Roseville");
+        Weather c = new Weather("95678");
         //Big image methods
         System.out.println(c.getWeather());
         System.out.println(c.getTemperatureF());
         System.out.println(c.getTemperatureC());
-        System.out.println(c.getIcon());
         System.out.println(c.getLongDate());
+        System.out.println(c.getIcon());
+
         //Forecast methods
         for(int i = 1; i < 6; i++)
         {
