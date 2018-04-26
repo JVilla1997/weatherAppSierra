@@ -150,6 +150,10 @@ public class Weather
     {
         return getFArray().get(index).getAsJsonObject().get("icon_url").getAsString();
     }
+    public String getForecastDate(int index)
+    {
+        return getFArray().get(index).getAsJsonObject().get("date").getAsJsonObject().get("weekday").getAsString();
+    }
 
 
     //How to use methods
@@ -166,7 +170,7 @@ public class Weather
         //Forecast methods
         for(int i = 1; i < 6; i++)
         {
-            System.out.print("\n" + "Day "+ i + " " + c.getHighF(i) + " ");
+            System.out.print("\n" + c.getForecastDate(i) + " " + c.getHighF(i) + " ");
             System.out.print(c.getHighC(i) + " ");
             System.out.print(c.getLowF(i) + " ");
             System.out.print(c.getLowC(i) + " ");
