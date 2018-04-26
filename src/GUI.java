@@ -126,19 +126,19 @@ public class GUI extends Program
 
         addActionListeners();
     }
-    /*
+
     public void actionPerformed(ActionEvent e)
     {
         String what = e.getActionCommand();
 
         if (what.equals("Search"))
         {
-            Class b = new Class(zip.getText());
+            Weather b = new Weather(zip.getText());
             city.setText(b.getCityState());
             city.setSize(city.getPreferredSize());
-            temp.setText(b.getTemperature());
+            temp.setText(b.getTemperatureF() + "");
             temp.setSize(temp.getPreferredSize());
-            tempC.setText(b.getTemperatureC());
+            tempC.setText(b.getTemperatureC() + "");
             tempC.setSize(tempC.getPreferredSize());
             condition.setText(b.getWeather());
             condition.setSize(condition.getPreferredSize());
@@ -161,5 +161,5 @@ public class GUI extends Program
     {
         GUI g = new GUI();
     }
-    */
+
 }
