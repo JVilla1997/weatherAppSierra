@@ -79,6 +79,11 @@ public class Weather
     // getWeather -- get the current conditions
     // getIcon -- get the URL of the icon used
 
+    public String getCityState()
+    {
+        if(jse == null) fetch();
+        return jse.getAsJsonObject().get("current_observation").getAsJsonObject().get("display_location").getAsJsonObject().get("full").getAsString();
+    }
     public Double getTemperatureF()
     {
 
@@ -165,6 +170,7 @@ public class Weather
         System.out.println(c.getTemperatureF());
         System.out.println(c.getTemperatureC());
         System.out.println(c.getLongDate());
+        System.out.println(c.getCityState());
         System.out.println(c.getIcon());
 
         //Forecast methods
