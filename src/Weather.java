@@ -103,7 +103,7 @@ public class Weather
     public String getIcon()
     {
         if(jse == null) fetch();
-        return jse.getAsJsonObject().get("current_observation").getAsJsonObject().get("icon_url").getAsString();
+        return jse.getAsJsonObject().get("current_observation").getAsJsonObject().get("icon").getAsString() + ".png";
     }
     public String getLongDate()
     {
