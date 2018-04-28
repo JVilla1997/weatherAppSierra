@@ -127,18 +127,18 @@ public class GUI extends Program
         {
             days[i] = new JLabel("");
             days[i].setSize(69, 20);
-            canvas.add(days[i], 40 + i * 69, 135);
+            canvas.add(days[i], 110 + i * 69, 250);
 
             forecastHigh[i] = new JLabel("");
             forecastHigh[i].setSize(69, 20);
-            canvas.add(forecastHigh[i], 40 + i * 69, 155);
+            canvas.add(forecastHigh[i], 110.5 + i * 69, 270);
 
             forecastLow[i] = new JLabel("");
             forecastLow[i].setSize(69, 20);
-            canvas.add(forecastLow[i], 40 + i * 69, 175);
+            canvas.add(forecastLow[i], 110.5 + i * 69, 290);
 
             dayIcons[i] = new GImage("");
-            canvas.add(dayIcons[i], 27.5 + i * 69, 195);
+            canvas.add(dayIcons[i], 97.5 + i * 69, 310);
         }
         addActionListeners();
     }
