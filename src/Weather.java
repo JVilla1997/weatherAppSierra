@@ -164,7 +164,8 @@ public class Weather
     //How to use methods
     public static void main(String[] args)
     {
-        Weather c = new Weather("95678");
+        Weather c = new Weather("NV","Las_Vegas");
+
         //Big image methods
         System.out.println(c.getWeather());
         System.out.println(c.getTemperatureF());
