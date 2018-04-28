@@ -119,27 +119,29 @@ public class GUI extends Program
         GRect lineTwo = new GRect(355, 0);
         canvas.add(lineTwo, 90, 370);
 
-        days = new JLabel[10];
-        forecastHigh = new JLabel[10];
-        forecastLow = new JLabel[10];
-        dayIcons = new GImage[10];
+        days = new JLabel[5];
+        forecastHigh = new JLabel[5];
+        forecastLow = new JLabel[5];
+        dayIcons = new GImage[5];
+
         for (int i = 0; i < 5; i++)
         {
             days[i] = new JLabel("");
             days[i].setSize(69, 20);
-            canvas.add(days[i], 40 + i * 69, 135);
+            canvas.add(days[i], 110 + i * 69, 250);
 
             forecastHigh[i] = new JLabel("");
             forecastHigh[i].setSize(69, 20);
-            canvas.add(forecastHigh[i], 40 + i * 69, 155);
+            canvas.add(forecastHigh[i], 110 + i * 69, 270);
 
             forecastLow[i] = new JLabel("");
             forecastLow[i].setSize(69, 20);
-            canvas.add(forecastLow[i], 40 + i * 69, 175);
+            canvas.add(forecastLow[i], 110 + i * 69, 290);
 
             dayIcons[i] = new GImage("");
-            canvas.add(dayIcons[i], 27.5 + i * 69, 195);
+            canvas.add(dayIcons[i], 97.5 + i * 69, 310);
         }
+
         addActionListeners();
     }
 
@@ -164,7 +166,7 @@ public class GUI extends Program
             icon.setSize(100, 100);
             for (int i = 0; i < 10; i++)
             {
-                //days[i].setText("<html><div style='text-align: center;'>" + w.getDay(i) + "</div></html>");
+                days[i].setText("<html><div style='text-align: center;'>" + w.getDay(i) + "</div></html>");
                 forecastHigh[i].setText("H: " + w.getHighF(i));
                 forecastLow[i].setText("L: " + w.getLowF(i));
                 dayIcons[i].setImage(w.getForecastIcon(i));
