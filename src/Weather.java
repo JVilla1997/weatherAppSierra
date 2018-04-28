@@ -120,6 +120,9 @@ public class Weather
         if( jse == null) fetch();
         return jse.getAsJsonObject().get("current_observation").getAsJsonObject().get("display_location").getAsJsonObject().get("zip").getAsString();
     }
+
+    //If the zip code constructor is not used, use the getZipCode() method to get the zip
+    //Else just call zipCode and use it on the website request
     public void fetchRadar()
     {
         try
