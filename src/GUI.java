@@ -18,7 +18,7 @@ public class GUI extends Program
     private JTextField zip;
     private JLabel date;
     private JLabel city;
-    private JLabel temp;
+    private JLabel tempF;
     private JLabel tempC;
     private JLabel condition;
     private JLabel time;
@@ -77,12 +77,12 @@ public class GUI extends Program
         date.setSize(150, 20);
         date.setFont(planeBold);
 
-        temp = new JLabel("");
-        canvas.add(temp,110, 110);
-        temp.setSize(150, 20);
-        temp.setSize(temp.getPreferredSize());
-        temp.setFont(comicSans);
-        temp.setForeground(Color.WHITE);
+        tempF = new JLabel("");
+        canvas.add(tempF,110, 110);
+        tempF.setSize(150, 20);
+        tempF.setSize(tempF.getPreferredSize());
+        tempF.setFont(comicSans);
+        tempF.setForeground(Color.WHITE);
 
         tempC = new JLabel("");
         canvas.add(tempC,230, 140);
@@ -133,16 +133,18 @@ public class GUI extends Program
 
         if (what.equals("Search"))
         {
-            Weather b = new Weather(zip.getText());
-            city.setText(b.getCityState());
+            Weather w = new Weather(zip.getText());
+            date.setText(w.getLongDate());
+            date.setSize(date.getPreferredSize());
+            city.setText(w.getCityState());
             city.setSize(city.getPreferredSize());
-            temp.setText(b.getTemperatureF() + "");
-            temp.setSize(temp.getPreferredSize());
-            tempC.setText(b.getTemperatureC() + "");
+            tempF.setText(Double.toString(w.getTemperatureF()));
+            tempF.setSize(tempF.getPreferredSize());
+            tempC.setText(Double.toString(w.getTemperatureC()));
             tempC.setSize(tempC.getPreferredSize());
-            condition.setText(b.getWeather());
+            condition.setText(w.getWeather());
             condition.setSize(condition.getPreferredSize());
-            icon.setImage("icons/" + b.getIcon());
+            icon.setImage("icons/" + w.getIcon());
             icon.setSize(100, 100);
         }
         else if (what.equals("Clear"))
@@ -150,7 +152,7 @@ public class GUI extends Program
             zip.setText("");
             date.setText("");
             city.setText("");
-            temp.setText("");
+            tempF.setText("");
             tempC.setText("");
             condition.setText("");
             icon.setImage("");
