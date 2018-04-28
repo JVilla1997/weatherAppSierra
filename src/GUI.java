@@ -123,7 +123,6 @@ public class GUI extends Program
         forecastHigh = new JLabel[10];
         forecastLow = new JLabel[10];
         dayIcons = new GImage[10];
-
         for (int i = 0; i < 5; i++)
         {
             days[i] = new JLabel("");
@@ -165,7 +164,7 @@ public class GUI extends Program
             icon.setSize(100, 100);
             for (int i = 0; i < 10; i++)
             {
-                days[i].setText("<html><div style='text-align: center;'>" + w.getDay(i) + "</div></html>");
+                //days[i].setText("<html><div style='text-align: center;'>" + w.getDay(i) + "</div></html>");
                 forecastHigh[i].setText("H: " + w.getHighF(i));
                 forecastLow[i].setText("L: " + w.getLowF(i));
                 dayIcons[i].setImage(w.getForecastIcon(i));
