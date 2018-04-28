@@ -34,7 +34,6 @@ public class Weather
         city = inputCity;
         state = inputState;
     }
-
     public void fetch()
     {
         String websiteRequest = "http://api.wunderground.com/api/" + API_KEY + "/conditions/forecast10day/q/";
@@ -49,7 +48,6 @@ public class Weather
         {
             websiteRequest += state + "/" + city + ".json";
         }
-
         try
         {
             URL weatherURL = new URL(websiteRequest);
@@ -70,7 +68,6 @@ public class Weather
             System.err.println("Got an IOException");
             ioe.printStackTrace();
         }
-
     }
     // Methods for the Current Day
     // fetch -- fetches the data of a .json URL
@@ -78,7 +75,6 @@ public class Weather
     // getTemperatureC -- get the current temperature in celsius
     // getWeather -- get the current conditions
     // getIcon -- get the URL of the icon used
-
     public String getCityState()
     {
         if(jse == null) fetch();
@@ -113,7 +109,6 @@ public class Weather
         currentDate = d.format(date);
         return currentDate;
     }
-
     // Methods for forecast
     // getFArray -- returns the "forecastday" JSON Array
     // getHighF -- returns the high of the index in fahrenheit
@@ -122,7 +117,6 @@ public class Weather
     // getLowC -- returns the low of the index in celsius
     // getForecastWeather -- returns the conditions of the index
     // getForecastIcon -- returns the URL for the icon of the index
-
     public JsonArray getFArray()
     {
         //put a JSON Array in "jse"
@@ -159,10 +153,8 @@ public class Weather
     {
         return getFArray().get(index).getAsJsonObject().get("date").getAsJsonObject().get("weekday").getAsString();
     }
-
-
     //How to use methods
-    public static void main(String[]args)
+    public static void main(String[] args)
     {
         Weather c = new Weather("95678");
         //Big image methods
@@ -172,7 +164,6 @@ public class Weather
         System.out.println(c.getLongDate());
         System.out.println(c.getCityState());
         System.out.println(c.getIcon());
-
         //Forecast methods
         for(int i = 1; i < 6; i++)
         {
@@ -184,5 +175,4 @@ public class Weather
             System.out.println("\n"+ c.getForecastIcon(i));
         }
     }
-
 }
