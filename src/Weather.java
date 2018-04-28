@@ -9,6 +9,10 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import java.net.URL;
+import java.net.URLEncoder;
+
 // Written by: Daniel Villavicencio
 // CS13    Spring 2018
 // Weather Application
@@ -19,6 +23,7 @@ public class Weather
     private String city = "";
     private String state = "";
     private String zipCode = "";
+    private String radarURL;
     private final String API_KEY = "1655f919bbcd29ed";
     JsonElement jse;
 
@@ -51,16 +56,17 @@ public class Weather
         try
         {
             URL weatherURL = new URL(websiteRequest);
-
+            String encodedZip = URLEncoder.encode(zipCode, "utf-8");
             InputStream is = weatherURL.openStream();
             InputStreamReader isr = new InputStreamReader(is);
             BufferedReader br = new BufferedReader(isr);
 
             jse = new JsonParser().parse(br);
+            radarURL = "http://api.wunderground.com/api/"+API_KEY +"/radar/satellite/q/"+encodedZip+".png?radius=100&width=400&height=400";
         }
         catch(java.net.MalformedURLException mue)
         {
-            System.err.println("URL not well formed");
+            System.err.println("Malformed URL");
             mue.printStackTrace();
         }
         catch(java.io.IOException ioe)
@@ -160,6 +166,10 @@ public class Weather
     public String getDay(int day)
     {
         return getForecast().get(day).getAsJsonObject().get("date").getAsJsonObject().get("weekday_short").getAsString();
+    }
+    public String getRadarImage()
+    {
+        return radarURL;
     }
     //How to use methods
     public static void main(String[] args)
