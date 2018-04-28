@@ -155,7 +155,44 @@ public class GUI extends Program
 
         if (what.equals("Search"))
         {
-            Weather w = new Weather(zip.getText());
+            //Start a weather Object
+            Weather w;
+
+            //Create two variables to input in the weather constructor
+            String stateInput;
+            String cityInput;
+
+            //Split the text on "zip" textfield into tokens
+            //Split by one comma and one or more spaces
+            String[] input = zip.getText().split( ",");
+
+            //If the split doesn't give us one token, its a city/state input
+            if( input.length != 1)
+            {
+                //If the first token has length 2, then that's the state.
+                //Else its the city
+                if( input[0].length() == 2)
+                {
+                    stateInput = input[0].trim();
+                    cityInput = input[1].trim();
+                }
+                else
+                {
+                    stateInput = input[1].trim();
+                    cityInput = input[0].trim();
+                }
+                //Replace any spaces with underscores in the cityInput variable
+                cityInput = cityInput.replace(" ", "_");
+
+                //Constructor for state and city
+                w = new Weather(stateInput, cityInput);
+            }
+
+            else
+            {
+                w = new Weather(zip.getText());
+            }
+            w.fetchRadar();
             date.setText(w.getLongDate());
             date.setSize(date.getPreferredSize());
             city.setText(w.getCityState());

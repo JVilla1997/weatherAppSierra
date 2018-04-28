@@ -3,6 +3,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -29,16 +30,17 @@ public class Weather
 
     // Two constructors
     // One of them handles zip codes
-    // The other one handles State/City
     public Weather(String zip )
     {
         zipCode = zip;
     }
+    // The other one handles State/City
     public Weather(String inputState, String inputCity)
     {
         city = inputCity;
         state = inputState;
     }
+
     public void fetch()
     {
         String websiteRequest = "http://api.wunderground.com/api/" + API_KEY + "/conditions/forecast10day/q/";
@@ -56,13 +58,11 @@ public class Weather
         try
         {
             URL weatherURL = new URL(websiteRequest);
-            String encodedZip = URLEncoder.encode(zipCode, "utf-8");
             InputStream is = weatherURL.openStream();
             InputStreamReader isr = new InputStreamReader(is);
             BufferedReader br = new BufferedReader(isr);
 
             jse = new JsonParser().parse(br);
-            radarURL = "http://api.wunderground.com/api/"+API_KEY +"/radar/satellite/q/"+encodedZip+".png?radius=100&width=400&height=400";
         }
         catch(java.net.MalformedURLException mue)
         {
@@ -115,6 +115,33 @@ public class Weather
         currentDate = d.format(date);
         return currentDate;
     }
+    public String getZipCode()
+    {
+        if( jse == null) fetch();
+        return jse.getAsJsonObject().get("current_observation").getAsJsonObject().get("display_location").getAsJsonObject().get("zip").getAsString();
+    }
+    public void fetchRadar()
+    {
+        try
+        {
+            String encodedZip;
+            if( zipCode == "")
+            {
+                encodedZip = URLEncoder.encode(getZipCode(), "utf-8");
+            }
+            else
+            {
+                encodedZip = URLEncoder.encode(zipCode, "utf-8");
+            }
+            radarURL = "http://api.wunderground.com/api/" + API_KEY + "/radar/satellite/q/" + encodedZip + ".png?radius=100&width=400&height=400";
+        }
+        catch( IOException ioe)
+        {
+            System.err.println("Got an IOException");
+            ioe.printStackTrace();
+        }
+    }
+
     // Methods for forecast
     // getFArray -- returns the "forecastday" JSON Array
     // getHighF -- returns the high of the index in fahrenheit
@@ -183,6 +210,7 @@ public class Weather
         System.out.println(c.getLongDate());
         System.out.println(c.getCityState());
         System.out.println(c.getIcon());
+
         //Forecast methods
         for(int i = 1; i < 6; i++)
         {
