@@ -110,7 +110,7 @@ public class GUI extends Program
         time.setSize(150, 20);
 
         radar = new GImage("");
-        canvas.add(radar, 110, 500);
+        canvas.add(radar, 110, 390);
         radar.setSize(200, 200);
 
         GRect line = new GRect(355, 0);
@@ -119,10 +119,11 @@ public class GUI extends Program
         GRect lineTwo = new GRect(355, 0);
         canvas.add(lineTwo, 90, 370);
 
-        days = new JLabel[10];
-        forecastHigh = new JLabel[10];
-        forecastLow = new JLabel[10];
-        dayIcons = new GImage[10];
+        days = new JLabel[5];
+        forecastHigh = new JLabel[5];
+        forecastLow = new JLabel[5];
+        dayIcons = new GImage[5];
+
         for (int i = 0; i < 5; i++)
         {
             days[i] = new JLabel("");
@@ -131,7 +132,11 @@ public class GUI extends Program
 
             forecastHigh[i] = new JLabel("");
             forecastHigh[i].setSize(69, 20);
-            canvas.add(forecastHigh[i], 110.5 + i * 69, 270);
+            canvas.add(forecastHigh[i], 110 + i * 69, 270);
+
+            forecastLow[i] = new JLabel("");
+            forecastLow[i].setSize(69, 20);
+            canvas.add(forecastLow[i], 110 + i * 69, 290);
 
             forecastLow[i] = new JLabel("");
             forecastLow[i].setSize(69, 20);
@@ -140,6 +145,7 @@ public class GUI extends Program
             dayIcons[i] = new GImage("");
             canvas.add(dayIcons[i], 97.5 + i * 69, 310);
         }
+
         addActionListeners();
     }
 
@@ -162,9 +168,10 @@ public class GUI extends Program
             condition.setSize(condition.getPreferredSize());
             icon.setImage("icons/" + w.getIcon());
             icon.setSize(100, 100);
+            radar.setImage(w.getRadarImage());
             for (int i = 0; i < 10; i++)
             {
-                //days[i].setText("<html><div style='text-align: center;'>" + w.getDay(i) + "</div></html>");
+                days[i].setText("<html><div style='text-align: center;'>" + w.getDay(i) + "</div></html>");
                 forecastHigh[i].setText("H: " + w.getHighF(i));
                 forecastLow[i].setText("L: " + w.getLowF(i));
                 dayIcons[i].setImage(w.getForecastIcon(i));
@@ -180,6 +187,7 @@ public class GUI extends Program
             tempC.setText("");
             condition.setText("");
             icon.setImage("");
+            radar.setImage("");
             for(int i = 0; i < 10; i++)
             {
                 days[i].setText("");
