@@ -153,6 +153,14 @@ public class Weather
     {
         return getFArray().get(index).getAsJsonObject().get("date").getAsJsonObject().get("weekday").getAsString();
     }
+    public JsonArray getForecast()
+    {
+        return jse.getAsJsonObject().get("forecast").getAsJsonObject().get("simpleforecast").getAsJsonObject().get("forecastday").getAsJsonArray();
+    }
+    public String getDay(int day)
+    {
+        return getForecast().get(day).getAsJsonObject().get("date").getAsJsonObject().get("weekday_short").getAsString();
+    }
     //How to use methods
     public static void main(String[] args)
     {
