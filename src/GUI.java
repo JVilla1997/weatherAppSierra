@@ -162,14 +162,14 @@ public class GUI extends Program
             condition.setSize(condition.getPreferredSize());
             icon.setImage("icons/" + w.getIcon());
             icon.setSize(100, 100);
-            /*for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 10; i++)
             {
-                days[i].setText("<html><div style='text-align: center;'>" + w.getDay(i) + "</div></html>");
-                forecastHigh[i].setText("H: " + w.getForecastHigh(i));
-                forecastLow[i].setText("L: " + w.getForecastLow(i));
+                //days[i].setText("<html><div style='text-align: center;'>" + w.getDay(i) + "</div></html>");
+                forecastHigh[i].setText("H: " + w.getHighF(i));
+                forecastLow[i].setText("L: " + w.getLowF(i));
                 dayIcons[i].setImage(w.getForecastIcon(i));
             }
-            days[0].setText("<html><div style='text-align: center;'> Today </div></html>");*/
+            days[0].setText("<html><div style='text-align: center;'> Today </div></html>");
         }
         else if (what.equals("Clear"))
         {
