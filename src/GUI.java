@@ -221,7 +221,7 @@ public class GUI extends Program
             condition.setText("");
             icon.setImage("");
             radar.setImage("");
-            for(int i = 0; i < 10; i++)
+            for(int i = 1; i < 6; i++)
             {
                 days[i].setText("");
                 dayIcons[i].setImage("");
