@@ -1,7 +1,6 @@
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,11 +9,10 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import java.net.URL;
 import java.net.URLEncoder;
 
-// Written by: Daniel Villavicencio
+// Written by: Daniel Villavicencio & Jorge Villavicencio
 // CS13    Spring 2018
 // Weather Application
 

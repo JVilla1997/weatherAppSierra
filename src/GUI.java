@@ -3,11 +3,9 @@ import acm.graphics.GImage;
 import acm.program.Program;
 import acm.program.*;
 import acm.graphics.*;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
@@ -193,9 +191,9 @@ public class GUI extends Program
             date.setSize(date.getPreferredSize());
             city.setText(w.getCityState());
             city.setSize(city.getPreferredSize());
-            tempF.setText(Double.toString(w.getTemperatureF()));
+            tempF.setText(Double.toString(w.getTemperatureF()) + "°");
             tempF.setSize(tempF.getPreferredSize());
-            tempC.setText(Double.toString(w.getTemperatureC()));
+            tempC.setText(Double.toString(w.getTemperatureC()) + "°");
             tempC.setSize(tempC.getPreferredSize());
             condition.setText(w.getWeather());
             condition.setSize(condition.getPreferredSize());
